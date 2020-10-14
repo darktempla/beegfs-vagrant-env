@@ -1,0 +1,12 @@
+[beegfs]
+name=BeeGFS 7.2 (rhel8)
+
+# If you have an active BeeGFS support contract, use the alternative URL below
+# to retrieve early updates. Replace username/password with your account for
+# the BeeGFS customer login area.
+#baseurl=https://username:password@www.beegfs.io/login/release/beegfs_7.2/dists/rhel8
+baseurl=https://www.beegfs.io/release/beegfs_7.2/dists/rhel8
+
+gpgkey=https://www.beegfs.io/release/beegfs_7.2/gpg/RPM-GPG-KEY-beegfs
+gpgcheck=0
+enabled=1

@@ -3,11 +3,14 @@
 
 Vagrant.configure(2) do |config|
 
-  config.vm.box = "chef/centos-7.0"
+  # config.vm.box = "chef/centos-7.0"
+
+  config.vm.box = 'centos/8'
+  config.vm.box_check_update = false
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
-    ansible.sudo = true
+    ansible.become = true
     ansible.groups = {
      "mgmt" => ["mgmt0"],
      "meta" => ["meta0"],

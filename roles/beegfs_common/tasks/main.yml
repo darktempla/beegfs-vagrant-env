@@ -1,16 +1,38 @@
 ---
+- name: "Update the system binaries"
+  debug:
+    msg: "TODO"
+
+- name: "Setup NTP server and configure"
+  debug:
+    msg: "TODO"
 
 - name: "BeeGFS RPM key"
-  rpm_key: state=present key=http://www.fhgfs.com/release/latest-stable/gpg/RPM-GPG-KEY-fhgfs
+  rpm_key: 
+    key: https://www.beegfs.io/release/beegfs_7.2/gpg/RPM-GPG-KEY-beegfs
+    state: present 
 
 - name: "BeeGFS repository configuration"
-  copy: src=fhgfs-rhel7.repo dest=/etc/yum.repos.d/ owner=root group=root mode=0644
+  copy: 
+    src: beegfs-rhel8.repo 
+    dest: /etc/yum.repos.d/ 
+    owner: root 
+    group: root 
+    mode: 0644
 
 - name: "Data directory"
-  file: path=/data state=directory
+  file: 
+    path: /data 
+    state: directory
 
 - name: "Packages"
-  yum: name="{{ item }}" state=present
-  with_items:
-  - augeas
-  - fhgfs-utils
+  yum: 
+    name: "{{ item }}" 
+    state: present
+  loop:
+    - augeas
+    - beegfs-utils
+
+- name: "Disable selinux"
+  debug:
+    msg: "TODO"
